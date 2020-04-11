@@ -2,9 +2,7 @@ import React from 'react';
 import routes from './routes'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -18,7 +16,8 @@ function App() {
             key={route.path}
             path={route.path}
             render={props => (
-              <route.component {...props} routes={route.routes}></route.component>
+                // pass the sub-routes down to keep nesting
+                <route.component {...props} routes={route.routes} />
             )}
           />
         ))
