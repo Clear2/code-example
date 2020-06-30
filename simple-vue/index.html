@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Vue</title>
+</head>
+<body>
+    <h1>{{msg}}</h1>
+    <input type="text" v-model="msg" />
+    <script src="./s-vue.js"></script>
+    <script src="./observer.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "hello world"
+            }
+        })
+
+        vm.msg = "direact"
+        console.log(vm)
+    </script>
+</body>
+</html>
