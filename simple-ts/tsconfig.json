@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true, // 强检测
+    "experimentalDecorators": true,
+    "lib": [
+      "ES6",  // symbol
+      "DOM" // console
+    ]
+  }
+}

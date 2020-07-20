@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termial</title>
+    <link rel="stylesheet" href="./css/xterm.min.css" />
+</head>
+<body>
+    <div id="terminal"></div>
+    <script src="./js/xterm.min.js"></script>
+    <script src="./js/socket.io.js"></script>
+      <script>
+        var term = new Terminal({
+          cursorBlink: true,
+          convertEol: true,
+            theme: {
+            cursor: 'help',//设置光标
+          }
+        });
+        term.open(document.getElementById('terminal'));
+
+        var namespace = '/test';
+        console.log(namespace)
+
+        var socket = io('http://127.0.0.1:5000/test');
+        socket.on('connect', function() {
+            console.log('======>>>connect')
+            socket.emit('my event', {data: 'I\'m connected!'});
+        });
+
+        socket.on('connect_error', (error) => {
+          console.log('Connect error! ' + error);
+          
+  20    });
+
+        let str = ''
+
+        term.prompt = () => {
+          term.write('\r\n');
+        };
+
+        socket.on('my_response', function(msg) {
+          console.log('server send ' + JSON.stringify(msg));
+          str = JSON.stringify(msg)
+  
+          term.write(str)
+          term.writeln('')
+          term.prompt()
+        })
+      </script>
+
+</body>
+</html>

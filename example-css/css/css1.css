@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.left {
+    text-align: center;
+    margin-left: -100%;
+    width: 300px;
+    background: orange;
+    float: left;
+}
+
+.right {
+    
+    width: 200px;
+    float: left;
+    margin-left: -200px;
+    background: blueviolet;
+}
+
+.middle {
+    width: 100%;
+    float: left;
+    background: yellow;
+}
+
+.middle .inner {
+    margin-left: 300px;
+}
+.left, .middle, .right {
+    margin-bottom: -999px;
+    padding-bottom: 999px;
+}
+
+.container {
+    overflow: hidden;
+}
